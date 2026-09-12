@@ -1,0 +1,1 @@
+"""VUT Hockey Flask backend package."""

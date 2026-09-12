@@ -1,0 +1,1 @@
+- [VUT Hockey datastore boundary](vut-hockey-datastore.md) — keep the app MySQL-only; do not hide missing configuration with mock data.

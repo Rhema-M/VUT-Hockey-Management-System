@@ -1,45 +1,51 @@
-# [Project name]
+# VUT Hockey
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Portable university hockey club website and management system using Vanilla HTML/CSS/JavaScript, Python Flask, and MySQL.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `cd vut-hockey && python -m backend.app` — run the Flask app on port 5000
+- `cd vut-hockey/backend && python -m compileall -q .` — check Python syntax
+- `for f in vut-hockey/js/*.js; do node --check "$f"; done` — check browser JavaScript syntax
+- Configure `vut-hockey/backend/.env` from `vut-hockey/backend/.env.example` before using data endpoints
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: semantic HTML, CSS, and modern browser JavaScript
+- Backend: Flask REST API with CORS, JWT, Werkzeug password hashing, and validation
+- Database: MySQL through `mysql-connector-python`
+- Uploads: validated JPG, JPEG, PNG, and WebP files under `vut-hockey/backend/uploads/`
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `vut-hockey/*.html` — public pages
+- `vut-hockey/admin/*.html` — protected admin pages
+- `vut-hockey/css/` — public and admin styles
+- `vut-hockey/js/` — centralized API client and page modules
+- `vut-hockey/backend/app.py` — Flask routes and resource CRUD
+- `vut-hockey/backend/database.py` — environment-based MySQL access
+- `vut-hockey/backend/middleware/auth.py` — JWT creation and admin protection
+- `vut-hockey/backend/utils/validators.py` — request and upload validation
+- `vut-hockey/database/schema.sql` — MySQL schema
+- `vut-hockey/database/seed.sql` — administrator, teams, and settings setup
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- MySQL remains the required datastore; the app does not substitute Replit Postgres or browser storage.
+- Public content is API-driven and uses explicit empty/error states when no confirmed data exists.
+- Admin sessions use bearer JWTs in `sessionStorage`; passwords are stored only as Werkzeug hashes.
+- Uploads are stored as generated filenames on disk and only their paths are stored in MySQL.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
-
-## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
+VUT Hockey can publish confirmed club teams, players, fixtures, results, news, gallery content, contact messages, and basic website settings through a protected admin area.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The MySQL database must be configured before `/api` data endpoints can return records.
+- Replace the placeholder password hash in `database/seed.sql` before running the seed script.
+- Never commit `.env`, uploaded private files, or real credentials.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- The portable developer setup is documented in `vut-hockey/README.md`.
