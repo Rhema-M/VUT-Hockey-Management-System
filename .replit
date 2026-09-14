@@ -1,0 +1,9 @@
+modules = ["python-base-3.13", "nodejs-24"]
+
+[[ports]]
+localPort = 5055
+externalPort = 80
+
+[nix]
+channel = "stable-25_05"
+packages = ["mariadb"]

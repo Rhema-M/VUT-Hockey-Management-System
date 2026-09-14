@@ -1,5 +1,5 @@
 import os
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +37,11 @@ def failure(message: str, status: int = 400):
 def serialise(value: Any) -> Any:
     if isinstance(value, (datetime, date)):
         return value.isoformat()
+    if isinstance(value, timedelta):
+        total_seconds = int(value.total_seconds())
+        hours, remainder = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
     if isinstance(value, list):
         return [serialise(item) for item in value]
     if isinstance(value, dict):
