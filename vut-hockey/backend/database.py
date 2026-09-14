@@ -1,11 +1,12 @@
 import os
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Any, Iterable
 
 import mysql.connector
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().with_name(".env"))
 
 
 def connection_config() -> dict[str, Any]:

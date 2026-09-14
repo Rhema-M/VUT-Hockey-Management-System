@@ -8,9 +8,14 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from werkzeug.security import check_password_hash
 
-from backend.database import execute, query, query_one
-from backend.middleware.auth import create_token, require_admin, token_user
-from backend.utils.validators import parse_date, parse_id, required, save_image, valid_email
+if __package__:
+    from backend.database import execute, query, query_one
+    from backend.middleware.auth import create_token, require_admin, token_user
+    from backend.utils.validators import parse_date, parse_id, required, save_image, valid_email
+else:
+    from database import execute, query, query_one
+    from middleware.auth import create_token, require_admin, token_user
+    from utils.validators import parse_date, parse_id, required, save_image, valid_email
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 UPLOAD_ROOT = PROJECT_ROOT / "backend" / "uploads"

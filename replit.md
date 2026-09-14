@@ -4,7 +4,7 @@ Portable university hockey club website and management system using Vanilla HTML
 
 ## Run & Operate
 
-- `cd vut-hockey && python -m backend.app` — run the Flask app on port 5000
+- `cd vut-hockey/backend && python app.py` — run the Flask app on port 5000
 - `cd vut-hockey/backend && python -m compileall -q .` — check Python syntax
 - `for f in vut-hockey/js/*.js; do node --check "$f"; done` — check browser JavaScript syntax
 - Configure `vut-hockey/backend/.env` from `vut-hockey/backend/.env.example` before using data endpoints
