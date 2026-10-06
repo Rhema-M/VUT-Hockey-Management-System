@@ -1,3 +1,0 @@
-- [VUT Hockey datastore boundary](vut-hockey-datastore.md) — keep the app MySQL-only; do not hide missing configuration with mock data.
-- [MySQL live verification](mysql-live-verification.md) — MySQL TIME values arrive as timedelta and need JSON-safe serialization.
-- [Python runtime environment](python-runtime.md) — keep the workspace Python environment available while verifying the portable Flask project.
