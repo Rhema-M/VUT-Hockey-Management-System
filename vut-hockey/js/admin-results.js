@@ -1,1 +1,73 @@
-(function () { "use strict"; window.VUTAdmin.crudPage({ endpoint: "/results", singular: "result", plural: "Results", empty: "No results added.", fields: [{ name: "team_id", type: "number" }, { name: "opponent" }, { name: "team_score", type: "number" }, { name: "opponent_score", type: "number" }, { name: "date" }, { name: "venue" }, { name: "competition" }], columns: [{ value: function (x) { return VUT.date(x.date); } }, { value: function (x) { return (x.team_name || "VUT Hockey") + " vs " + (x.opponent || "Opponent"); } }, { value: function (x) { return (x.team_score === undefined ? "—" : x.team_score + " – " + x.opponent_score); } }] }); }());
+(function () {
+  "use strict";
+
+  const teamSelect = document.querySelector("#team_id");
+
+  async function loadTeams() {
+    if (!teamSelect) return;
+
+    try {
+      const teams = VUT.list(await VUT.api.get("/teams"));
+
+      teamSelect.innerHTML =
+        '<option value="" selected disabled>Select a team</option>';
+
+      teams.forEach(function (team) {
+        const option = document.createElement("option");
+
+        option.value = team.id;
+        option.textContent = team.name;
+
+        teamSelect.appendChild(option);
+      });
+    } catch (error) {
+      console.error("Failed to load teams:", error);
+
+      teamSelect.innerHTML =
+        '<option value="" selected disabled>Could not load teams</option>';
+    }
+  }
+
+  loadTeams();
+
+  window.VUTAdmin.crudPage({
+    endpoint: "/results",
+    singular: "result",
+    plural: "Results",
+    empty: "No results added.",
+
+    fields: [
+      { name: "team_id", type: "number" },
+      { name: "opponent" },
+      { name: "team_score", type: "number" },
+      { name: "opponent_score", type: "number" },
+      { name: "date" },
+      { name: "venue" },
+      { name: "competition" }
+    ],
+
+    columns: [
+      {
+        value: function (x) {
+          return VUT.date(x.date);
+        }
+      },
+      {
+        value: function (x) {
+          return (x.team_name || "VUT Hockey") +
+            " vs " +
+            (x.opponent || "Opponent");
+        }
+      },
+      {
+        value: function (x) {
+          return (
+            x.team_score === undefined
+              ? "—"
+              : x.team_score + " – " + x.opponent_score
+          );
+        }
+      }
+    ]
+  });
+}());

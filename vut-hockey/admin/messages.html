@@ -1,3 +1,59 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Messages | VUT Hockey Admin</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/admin.css"></head>
-<body class="admin-body"><div class="admin-shell"><aside class="admin-sidebar"><a class="brand admin-brand" href="../index.html"><span class="brand-mark">V</span><span class="brand-text">VUT Hockey<small>Admin desk</small></span></a><nav class="admin-nav"></nav><div class="admin-side-bottom"><button class="button button-muted button-small" type="button" data-logout>Sign out</button></div></aside><section class="admin-main"><header class="admin-topbar"><button class="button button-muted button-small admin-menu-toggle" type="button">Menu</button><h1>Messages</h1><span data-admin-user>administrator</span></header><main class="admin-content"><div data-admin-feedback class="admin-feedback" hidden></div><article class="admin-card"><div class="admin-toolbar"><div><h2>Contact messages</h2><p>Review messages received through the public contact form.</p></div></div><div class="table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Message</th><th>Received</th><th>Status</th><th>Actions</th></tr></thead><tbody data-admin-list></tbody></table></div></article></main></section></div><script src="../js/api.js"></script><script src="../js/admin.js"></script><script>VUTAdmin.boot();</script><script src="../js/admin-messages.js"></script></body></html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Messages | VUT Hockey Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar"><a class="brand admin-brand" href="../index.html"><span
+                    class="brand-mark">V</span><span class="brand-text">VUT Hockey<small>Admin desk</small></span></a>
+            <nav class="admin-nav"></nav>
+            <div class="admin-side-bottom"><button class="button button-muted button-small" type="button"
+                    data-logout>Sign out</button></div>
+        </aside>
+        <section class="admin-main">
+            <header class="admin-topbar"><button class="button button-muted button-small admin-menu-toggle"
+                    type="button">Menu</button>
+                <h1>Messages</h1><span data-admin-user>administrator</span>
+            </header>
+            <main class="admin-content">
+                <div data-admin-feedback class="admin-feedback" hidden></div>
+                <article class="admin-card">
+                    <div class="admin-toolbar">
+                        <div>
+                            <h2>Contact messages</h2>
+                            <p>Review messages received through the public contact form.</p>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th>Received</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody data-admin-list></tbody>
+                        </table>
+                    </div>
+                </article>
+            </main>
+        </section>
+    </div>
+    <script src="../js/api.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>VUTAdmin.boot();</script>
+    <script src="../js/admin-messages.js"></script>
+</body>
+
+</html>

@@ -1,9 +1,71 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Teams | VUT Hockey Admin</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/admin.css"></head>
-<body class="admin-body"><div class="admin-shell">
-<aside class="admin-sidebar"><a class="brand admin-brand" href="../index.html"><span class="brand-mark">V</span><span class="brand-text">VUT Hockey<small>Admin desk</small></span></a><nav class="admin-nav"></nav><div class="admin-side-bottom"><button class="button button-muted button-small" type="button" data-logout>Sign out</button></div></aside>
-<section class="admin-main"><header class="admin-topbar"><button class="button button-muted button-small admin-menu-toggle" type="button">Menu</button><h1>Teams</h1><span data-admin-user>administrator</span></header><main class="admin-content">
-<div data-admin-feedback class="admin-feedback" hidden></div><article class="admin-card admin-form"><h2 data-form-title>Add team</h2><form data-admin-form><input type="hidden" name="id"><div class="form-grid"><div class="field"><label for="name">Team name</label><input id="name" name="name" required></div><div class="field"><label for="category">Category</label><input id="category" name="category" required></div><div class="field field-full"><label for="description">Description</label><textarea id="description" name="description"></textarea></div><div class="field field-full"><label for="logo">Team logo</label><input id="logo" name="logo" type="file" accept=".jpg,.jpeg,.png,.webp"></div></div><button class="button button-primary" type="submit">Save team</button> <button class="button button-muted" type="button" data-cancel>Cancel</button></form></article>
-<article class="admin-card"><div class="admin-toolbar"><h2>Published teams</h2><p>Only confirmed club details.</p></div><div class="table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Category</th><th>Description</th><th>Actions</th></tr></thead><tbody data-admin-list></tbody></table></div></article>
-</main></section></div><script src="../js/api.js"></script><script src="../js/admin.js"></script><script>VUTAdmin.boot();</script><script src="../js/admin-teams.js"></script></body></html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teams | VUT Hockey Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar"><a class="brand admin-brand" href="../index.html"><span
+                    class="brand-mark">V</span><span class="brand-text">VUT Hockey<small>Admin desk</small></span></a>
+            <nav class="admin-nav"></nav>
+            <div class="admin-side-bottom"><button class="button button-muted button-small" type="button"
+                    data-logout>Sign out</button></div>
+        </aside>
+        <section class="admin-main">
+            <header class="admin-topbar"><button class="button button-muted button-small admin-menu-toggle"
+                    type="button">Menu</button>
+                <h1>Teams</h1><span data-admin-user>administrator</span>
+            </header>
+            <main class="admin-content">
+                <div data-admin-feedback class="admin-feedback" hidden></div>
+                <article class="admin-card admin-form">
+                    <h2 data-form-title>Add team</h2>
+                    <form data-admin-form><input type="hidden" name="id">
+                        <div class="form-grid">
+                            <div class="field"><label for="name">Team name</label><input id="name" name="name" required>
+                            </div>
+                            <div class="field"><label for="category">Category</label><input id="category"
+                                    name="category" required></div>
+                            <div class="field field-full"><label for="description">Description</label><textarea
+                                    id="description" name="description"></textarea></div>
+                            <div class="field field-full"><label for="logo">Team logo</label><input id="logo"
+                                    name="logo" type="file" accept=".jpg,.jpeg,.png,.webp"></div>
+                        </div><button class="button button-primary" type="submit">Save team</button> <button
+                            class="button button-muted" type="button" data-cancel>Cancel</button>
+                    </form>
+                </article>
+                <article class="admin-card">
+                    <div class="admin-toolbar">
+                        <h2>Published teams</h2>
+                        <p>Only confirmed club details.</p>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody data-admin-list></tbody>
+                        </table>
+                    </div>
+                </article>
+            </main>
+        </section>
+    </div>
+    <script src="../js/api.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>VUTAdmin.boot();</script>
+    <script src="../js/admin-teams.js"></script>
+</body>
+
+</html>

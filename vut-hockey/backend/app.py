@@ -63,7 +63,12 @@ def optional_one(sql: str, params: tuple = ()):
 
 
 def payload() -> dict[str, Any]:
-    return request.get_json(silent=True) or request.form.to_dict()
+    data = request.get_json(silent=True)
+
+    if data:
+        return data
+
+    return request.form.to_dict()
 
 
 def resource_id(name: str) -> int | None:
@@ -93,6 +98,7 @@ def health():
 @app.post("/api/auth/login")
 def login():
     data = payload()
+    
     email = str(data.get("email", "")).strip().lower()
     password = str(data.get("password", ""))
     if not valid_email(email) or not password:
@@ -349,6 +355,10 @@ def resource_list(resource):
 def create_resource(resource):
     config = RESOURCE_CONFIG[resource]
     data = payload()
+
+    if resource == "news":
+        print("NEWS FORM DATA:", data)
+        print("NEWS FILES:", request.files)
     if "image_category" in config and request.files.get(config["file_field"]):
         try:
             data[config["file_field"]] = save_image(
